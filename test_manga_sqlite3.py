@@ -18,3 +18,5 @@ def print_manga_faves():
 if __name__ == '__main__':
     print_manga_faves()
 
+print('hmmm, still testing , testing')
+
