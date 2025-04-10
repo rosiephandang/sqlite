@@ -1,7 +1,5 @@
 import sqlite3
 
-print('Hello, testing, testing...')
-
 def print_manga_faves():
     fave = input('Rating lower limit: ')
     db = sqlite3.connect('fave_manga_draft.db')
@@ -18,5 +16,4 @@ def print_manga_faves():
 if __name__ == '__main__':
     print_manga_faves()
 
-print('hmmm, still testing , testing')
 
