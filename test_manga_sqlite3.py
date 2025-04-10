@@ -1,5 +1,6 @@
 import sqlite3
 
+print('Hello, testing, testing...')
 
 def print_manga_faves():
     fave = input('Rating lower limit: ')
