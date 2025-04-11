@@ -47,7 +47,18 @@ def print_manga_author_is_also_artist():
 
 
 # main codes
+while True:
+    ask_menu = input('\nWhat to you want to know? \n 1.) The highest rated manga out of my current favourites. \n 2.) The lowest rated manga out of my current favourites. \n 3.) Exit menu \n ')
+    if ask_menu == '1':
+        print_manga_rating_upper_limit()
+    elif ask_menu == '2':
+        print_manga_rating_lower_limit()
+    elif ask_menu == '3':
+        break
+    else:
+        print('That was not a choice :) \nChoose either 1 or 2. ')
+    
 if __name__ == '__main__':
-    print_manga_rating_upper_limit()
+    print('testing, testing')
 
 
