@@ -16,9 +16,9 @@ def print_manga_rating_lower_limit():
     results = cursor.fetchall()
     plus = 1
     # loop through the results
-    print(f'My current mangas with a rating of {fave} and/or higher are:')
+    print(f'My current manga with a rating of {fave} and/or higher are:')
     for manga in results:
-        print(f'Rank {plus :<3}{manga[1]:<30}rating: {manga[5]}')
+        print(f'Rank {plus :<5}{manga[1]:<30}rating: {manga[5]}')
         plus += 1
     # finish loop here
     db.close
@@ -33,31 +33,41 @@ def print_manga_rating_upper_limit():
     results = cursor.fetchall()
     lower = 0
     # loop through the results
-    print(f'My current mangas with a rating of {fave} and/or lower are:')
+    print(f'My current manga with a rating of {fave} and/or lower are:')
     for manga in results:
         lower += 1
         minus = len(manga) - lower
-        print(f'Rank {minus :<3}{manga[1]:<30}rating: {manga[5]}')
+        print(f'Rank {minus :<5}{manga[1]:<30}rating: {manga[5]}')
         
     # finish loop here
     db.close
 
 def print_manga_author_is_also_artist():
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
     sql = 'SELECT * FROM manga_faves WHERE manga_author = manga_artist;'
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # looping through results
+    for i in results:
+        print(f'A manga with the same author and artist is {i[1]}, by {i[2]}')
 
 
 # main codes
 while True:
-    ask_menu = input('\nWhat to you want to know? \n 1.) The highest rated manga out of my current favourites. \n 2.) The lowest rated manga out of my current favourites. \n 3.) Exit menu \n ')
+    ask_menu = input('\nWhat to you want to know? \n 1.) The highest rated manga out of my current favourites. \n 2.) The lowest rated manga out of my current favourites. \n 3.) Manga with the same author and artist \n 4.) Exit menu \n ')
     if ask_menu == '1':
-        print_manga_rating_upper_limit()
-    elif ask_menu == '2':
         print_manga_rating_lower_limit()
+    elif ask_menu == '2':
+        print_manga_rating_upper_limit()
     elif ask_menu == '3':
+        print_manga_author_is_also_artist()
+    elif ask_menu == '4':
         break
     else:
-        print('That was not a choice :) \nChoose either 1 or 2. ')
+        print('That was not a choice :) \nChoose one of the options. ')
     
+# a lil sumthin to remember
 if __name__ == '__main__':
     print('testing, testing')
 
