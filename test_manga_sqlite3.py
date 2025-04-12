@@ -71,7 +71,7 @@ def print_manga_author_is_also_artist():
 
 # main codes
 while True:
-    ask_menu = input('\nWhat to you want to know? \n 1.) All my current favourites. \n 2.) The highest rated manga out of my current favourites. \n 3.) The lowest rated manga out of my current favourites. \n 4.) Manga with the same author and artist \n 5.) Exit menu \n ')
+    ask_menu = input('\nWhat to you want to know? \n 1.) All my current favourites. \n 2.) The highest rated manga out of my current favourites. \n 3.) The lowest rated manga out of my current favourites. \n 4.) Manga with the same author and artist \n 5.) Exit menu \n \n ')
     if ask_menu == '1':
         print_manga()
     elif ask_menu == '2':
@@ -87,6 +87,6 @@ while True:
     
 # a lil sumthin to remember
 if __name__ == '__main__':
-    print('testing, testing')
+    print('\ntesting, testing\n')
 
 
