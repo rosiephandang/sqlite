@@ -61,14 +61,14 @@ def ada_character_affiliation():
 def character_affiliation_menu():
     while True:
         try:
-            affi = int(input("\nCharacter affiliation menu: \n\n 1.)  Characters affiliated with the Armed Detective Agency \n 2.)  Characters affiliated with the Port Mafia\n 3.)  Characters affiliated with the Japanese government\n 4.)  Characters affiliated with the Japanese millitary\n 5.)  Characters affiliated with the Guild\n 6.)  Characters affiliated with Rats in the House of the Dead\n 7.)  Characters affiliated with the Decay of Angels\n 8.)  Characters affiliated with the Sheep\n 9.)  Characters affiliated with the Transcendents\n 10.) Characters affiliated with Manhasset Security\n 11.) Characters affiliated with Mimic\n 12.) Characters affiliated with other organisations\n 13.) Unaffiliated characters\n 14.) Back to main menu\n\n"))
-            if affi == 1:
+            affi = int(input("\nCharacter affiliation menu: \n\n 1.)  All characters and their affiliations (some will show up more than once)\n 2.)  Characters affiliated with the Armed Detective Agency \n 3.)  Characters affiliated with the Port Mafia\n 4.)  Characters affiliated with the Japanese government\n 5.)  Characters affiliated with the Japanese millitary\n 6.)  Characters affiliated with the Guild\n 7.)  Characters affiliated with Rats in the House of the Dead\n 8.)  Characters affiliated with the Decay of Angels\n 9.)  Characters affiliated with the Sheep\n 10.) Characters affiliated with the Transcendents\n 11.) Characters affiliated with Manhasset Security\n 12.) Characters affiliated with Mimic\n 13.) Characters affiliated with other organisations\n 14.) Unaffiliated characters\n 15.) Back to main menu\n"))
+            if affi == 2:
                 ada_character_affiliation()
-            if affi == 14:
+            if affi == 15:
                 bsd_main_menu()
                 break
         except ValueError:
-            print('Answer in numbers from 1-13 only please.\n')
+            print('Answer in numbers from 1-15 only please.\n')
     return
 
 
