@@ -57,6 +57,175 @@ def ada_character_affiliation():
     # finish loop here
     db.close
 
+def pm_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Port Mafia ' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Port Mafia are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def jpn_gov_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Japanese Government' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Japanese government are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def jpn_mltr_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Japanese Military' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Japanese millitary are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def guild_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'The Guild' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Guild are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def rats_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Rats in the House of the Dead' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Rats in the Housse of the Dead are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def doa_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Decay of Angels' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Decay of Angels are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def sheep_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'The Sheep' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with The Sheep are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def tran_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Transcendents ' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with The Transcendents are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def manh_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Manhasset Security' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with Manhasset Security are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def mimic_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Mimic' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with Mimic are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+def other_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Order of the Clock Tower' OR affiliation.affiliation_name = 'The 7 Traitors' OR affiliation.affiliation_name = 'V' OR affiliation.affiliation_name = 'Zoopark' AND NOT affiliation.affiliation_name = 'Unafilliated' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with other organisations are are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<50}Affiliation: {i[2]}')
+    # finish loop here
+    db.close
+
+def un_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Unafilliated' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Unaffiliated characters are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<40}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
+
 # 3rd category menu functions
 def character_affiliation_menu():
     while True:
@@ -64,6 +233,30 @@ def character_affiliation_menu():
             affi = int(input("\nCharacter affiliation menu: \n\n 1.)  All characters and their affiliations (some will show up more than once)\n 2.)  Characters affiliated with the Armed Detective Agency \n 3.)  Characters affiliated with the Port Mafia\n 4.)  Characters affiliated with the Japanese government\n 5.)  Characters affiliated with the Japanese millitary\n 6.)  Characters affiliated with the Guild\n 7.)  Characters affiliated with Rats in the House of the Dead\n 8.)  Characters affiliated with the Decay of Angels\n 9.)  Characters affiliated with the Sheep\n 10.) Characters affiliated with the Transcendents\n 11.) Characters affiliated with Manhasset Security\n 12.) Characters affiliated with Mimic\n 13.) Characters affiliated with other organisations\n 14.) Unaffiliated characters\n 15.) Back to main menu\n"))
             if affi == 2:
                 ada_character_affiliation()
+            if affi == 3:
+                pm_character_affiliation()
+            if affi == 4:
+                jpn_gov_character_affiliation()
+            if affi == 5:
+                jpn_mltr_character_affiliation()
+            if affi == 6:
+                guild_character_affiliation()
+            if affi == 7:
+                rats_character_affiliation()
+            if affi == 8:
+                doa_character_affiliation()
+            if affi == 9:
+                sheep_character_affiliation()
+            if affi == 10:
+                tran_character_affiliation()
+            if affi == 11:
+                manh_character_affiliation()
+            if affi == 12:
+                mimic_character_affiliation()
+            if affi == 13:
+                other_character_affiliation()
+            if affi == 14:
+                un_character_affiliation()
             if affi == 15:
                 bsd_main_menu()
                 break
