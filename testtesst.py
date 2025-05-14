@@ -14,6 +14,7 @@ def exit_option():
     sys.exit()
 
 
+
 # actual query functions
 def all_characters():
     # docstring - print all outputs nicely
@@ -23,68 +24,30 @@ def all_characters():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'\nAll characters:\n')
+    print(f'All characters:\n')
     for character in results:
         print(f'Name: {character[0]:<36}Job: {character[1]:<75}Titles: {character[2]}\n')
     # finish loop here
     db.close
 
-def characters_with_abilities():
-    # docstring - print all outputs nicely
-    db = sqlite3.connect(database)
-    cursor = db.cursor()
-    sql = "SELECT name, ability, job FROM bsd_characters WHERE NOT ability = 'n' ORDER BY name ASC;"
-    cursor.execute(sql)
-    results = cursor.fetchall()
-    # loop through the results
-    print(f'\nAll characters with abilities:\n')
-    for character in results:
-        print(f'Name: {character[0]:<36}Ability: {character[1]:<35}Job: {character[2]}\n')
-    # finish loop here
-    db.close
-
-# 3rd category menu functions
-
-def character_inspo_menu():
-    while True:
-        try:
-            inspo = int(input("The inspiration for characters menu: \n(read the bit of explanation about the series from the main menu for context) \n\n 1.) All characters with known inspirations from the real world \n 2.) Sort by the real-life authors that inspired the characters' death year\n 3.) Sort by the real-life authors that inspired the characters' birth year\n 4.) Back to main menu\n"))
-            if inspo == 4:
-                bsd_main_menu()
-                break
-        except ValueError:
-            print('Answer in numbers from 1-4 only please.\n')
-    return
-
-
-# 2nd category menu functions
+# 2nd menu functions
 def bsd_backstory():
         print('\nBungo Stray Dogs is about...\n')
         while True:
             exit = input("Do you want to back to main menu? 'yes' or 'no' answers only please.\n")
             if exit == 'yes':
                 bsd_main_menu()
-                break
             if exit == 'no':
                 exit_option()
                 break
            
 def bsd_character_menu_1():
     while True:
-        try:
-            first_characters_menu = int(input('\nCharacters menu:\n 1.) All characters \n 2.) Characters with abilities \n 3.) Sort by inspiration \n 4.) Sort by affiliation \n 5.) Sort by age \n 6.) Sort by gender \n 7.) Sort by status \n 8.) Sort by nationality \n 9.) Back to main menu\n\n'))
-            if first_characters_menu == 1:
-                all_characters()
-            if first_characters_menu == 2:
-                characters_with_abilities()
-            if first_characters_menu == 3:
-                character_inspo_menu()
-            if first_characters_menu == 9:
-                bsd_main_menu()
-                break
-        except ValueError:
-            print('Answer in numbers from 1-9 only please.\n')
-        return
+        first_characters_menu = int(input('\nCharacters menu:\n 1.) All characters \n 2.) Characters with abilities \n 3.) Sort by inspiration \n 4.) Sort by affiliation \n 5.) Sort by age \n 6.) Sort by gender \n 7.) Sort by status \n 8.) Sort by nationality \n 9.) Back to main menu\n\n'))
+        if first_characters_menu == 1:
+            all_characters()
+        if first_characters_menu == 9:
+            bsd_main_menu()
 
 # navigation main menu
 def bsd_main_menu():
@@ -93,6 +56,7 @@ def bsd_main_menu():
             main_menu = int(input('\nMain menu: \n 1.) A bit about Bungo Stray Dogs before you get started. \n 2.) Characters database \n 3.) Exit menu \n \n'))
             if main_menu == 1:
                 bsd_backstory()
+                break
             if main_menu == 2:
                 bsd_character_menu_1()
             if main_menu == 3:
@@ -112,5 +76,4 @@ while True:
     if intro == 'no':
         exit_option()
         break
-
 
