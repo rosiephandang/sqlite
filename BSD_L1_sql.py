@@ -43,7 +43,34 @@ def characters_with_abilities():
     # finish loop here
     db.close
 
+def ada_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id WHERE affiliation.affiliation_name = 'Armed Detective Agency' ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'Characters affiliated with the Armed Detective Agency are:\n')
+    for i in results:
+        print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
+    # finish loop here
+    db.close
+
 # 3rd category menu functions
+def character_affiliation_menu():
+    while True:
+        try:
+            affi = int(input("\nCharacter affiliation menu: \n\n 1.)  Characters affiliated with the Armed Detective Agency \n 2.)  Characters affiliated with the Port Mafia\n 3.)  Characters affiliated with the Japanese government\n 4.)  Characters affiliated with the Japanese millitary\n 5.)  Characters affiliated with the Guild\n 6.)  Characters affiliated with Rats in the House of the Dead\n 7.)  Characters affiliated with the Decay of Angels\n 8.)  Characters affiliated with the Sheep\n 9.)  Characters affiliated with the Transcendents\n 10.) Characters affiliated with Manhasset Security\n 11.) Characters affiliated with Mimic\n 12.) Characters affiliated with other organisations\n 13.) Unaffiliated characters\n 14.) Back to main menu\n\n"))
+            if affi == 1:
+                ada_character_affiliation()
+            if affi == 14:
+                bsd_main_menu()
+                break
+        except ValueError:
+            print('Answer in numbers from 1-13 only please.\n')
+    return
+
 
 def character_inspo_menu():
     while True:
@@ -79,6 +106,8 @@ def bsd_character_menu_1():
                 characters_with_abilities()
             if first_characters_menu == 3:
                 character_inspo_menu()
+            if first_characters_menu == 4:
+                character_affiliation_menu()
             if first_characters_menu == 9:
                 bsd_main_menu()
                 break
