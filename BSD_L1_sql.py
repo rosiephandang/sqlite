@@ -234,6 +234,92 @@ def age_unknown():
     # finish loop here
     db.close
 
+# character gender sort query functions
+def female_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, gender, job FROM bsd_characters WHERE gender = 'Female' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll female characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Gender: {character[1]:<15}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def male_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, gender, job FROM bsd_characters WHERE gender = 'Male' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll male characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Gender: {character[1]:<15}Job {character[2]}\n')
+    # finish loop here
+    db.close
+
+def other_gender_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, gender, job FROM bsd_characters WHERE gender = 'Other' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll other gendered characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Gender: {character[1]:<15}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+# character status sort query functions
+def alive_characters():
+     # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, status, job FROM bsd_characters WHERE status = 'Alive' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll alive characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Status: {character[1]:<15}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def dead_characters():
+     # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, status, job FROM bsd_characters WHERE status = 'Dead' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll dead characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Status: {character[1]:<15}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def unknown_characters():
+     # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, status, job FROM bsd_characters WHERE status = 'Unknown' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll status unknown characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Status: {character[1]:<15}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
 # affiliation character query functions
 
 def all_character_affiliation():
@@ -559,6 +645,36 @@ def character_age():
         except ValueError:
             print('Answer in numbers from 1-4 only please.\n')
 
+def character_gender():
+    while True:
+        try:
+            gender = int(input('How do you want to sort by character gender?\n\n 1.) Sort for female characters\n 2.) Sort for male characters\n 3.) Sort for other gender characters\n 4.) Back to main menu\n\n'))
+            if gender == 1:
+                female_characters()
+            if gender == 2:
+                male_characters()
+            if gender == 3:
+                other_gender_characters()
+            if gender == 4:
+                bsd_main_menu()
+        except ValueError:
+            print('Answer in numbers from 1-4 only please.\n')
+
+def character_status():
+    while True:
+        try:
+            status = int(input('How do you want to sort by character status? Warning, spoilers ahead.\n\n 1.) Sort for alive characters\n 2.) Sort for dead characters\n 3.) Sort for status curently unknown characters\n 4.) Back to main menu\n\n'))
+            if status == 1:
+                alive_characters()
+            if status == 2:
+                dead_characters()
+            if status == 3:
+                unknown_characters()
+            if status == 4:
+                bsd_main_menu()
+        except ValueError:
+            print('Answer in numbers from 1-4 only please.\n')
+
 # 2nd category menu functions
 def bsd_backstory():
         print('\nBungo Stray Dogs is about...\n')
@@ -585,6 +701,12 @@ def bsd_character_menu_1():
                 character_affiliation_menu()
             if first_characters_menu == 5:
                 character_age()
+            if first_characters_menu == 6:
+                character_gender()
+            if first_characters_menu == 7:
+                character_status()
+            if first_characters_menu == 8:
+                ()
             if first_characters_menu == 9:
                 bsd_main_menu()
                 break
