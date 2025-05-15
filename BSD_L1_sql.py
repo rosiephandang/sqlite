@@ -1,5 +1,3 @@
-print("\nThis is for the bsd fans, ig \n \nWarning, there are spoilers for the series, so if you don't want to know them, click out. \n")
-
 # docstring - name and application 
 # imports
 import sqlite3
@@ -856,12 +854,30 @@ def bsd_main_menu():
         
 
 # intro main menu function
-while True:
-    intro = input("Enter 'yes' to keep going, or 'no' to stop:\n")
-    if intro == 'yes':
-        bsd_main_menu()
-    if intro == 'no':
-        exit_option()
-        break
+def intro_entry():
+    print("\nLOG IN DONE \n\nWarning, there are spoilers for the Bungo Stray Dogs, so if you don't want to know them, click out. \n")
+    while True:
+        intro = input("Enter 'yes' to keep going, or 'no' to stop:\n")
+        if intro == 'yes':
+            bsd_main_menu()
+        if intro == 'no':
+            exit_option()
+            break
 
+# log in
+print("\nBungo Stray Dogs character database\n________\n\nLOG IN\n________\n\nWhat is Natsume Soseki's name as a cat? (Hint, it's Haruno's cat)\n\nYou have 5 tries.")
+log_in = input("\nEnter: ".lower())
+tries = 5
+while tries > 1:
+    if log_in == 'miichan' or log_in == 'mii-chan':
+        intro_entry()
+    else:
+        tries -= 1
+        print('\nNope. Try again.\n')
+        if tries > 1:
+            print(f'You only have {tries} tries left.')
+        if tries == 1:
+            print(f'You only have {tries} try left.')
+        log_in = input("\nEnter: ".lower())
 
+print('\nAccess denied.')
