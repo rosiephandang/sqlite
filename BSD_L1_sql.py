@@ -43,6 +43,213 @@ def characters_with_abilities():
     # finish loop here
     db.close
 
+def all_inspo():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, inspo FROM bsd_characters WHERE NOT inspo = 'unknown' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters with known inspiration:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Inspiration: {character[1]:<35}\n')
+    # finish loop here
+    db.close
+
+# asking about the real death & birth years of inspo query functions
+def inspo_birth_year_before():
+    # docstring - print all outputs nicely
+    bfr_birth = int(input('\nEnter a year: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, inspo, birth_year, death_year FROM bsd_characters WHERE birth_year <= ? ORDER BY name ASC;'
+    cursor.execute(sql,(bfr_birth,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters with authors (as their inspiration) born before {bfr_birth} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Inspiration: {i[1]:<85}Birth year: {i[2]:<10}Death year: {i[3]}')
+    # finish loop here
+    db.close
+
+def inspo_birth_year_after():
+    # docstring - print all outputs nicely
+    aft_birth = int(input('\nEnter a year: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, inspo, birth_year, death_year FROM bsd_characters WHERE birth_year >= ? ORDER BY name ASC;'
+    cursor.execute(sql,(aft_birth,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters with authors (as their inspiration) born after {aft_birth} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Inspiration: {i[1]:<85}Birth year: {i[2]:<10}Death year: {i[3]}')
+    # finish loop here
+    db.close
+
+def inspo_death_year_before():
+    # docstring - print all outputs nicely
+    bfr_death = int(input('\nEnter a year: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, inspo, birth_year, death_year FROM bsd_characters WHERE death_year <= ? ORDER BY name ASC;'
+    cursor.execute(sql,(bfr_death,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters with authors (as their inspiration) that died before {bfr_death} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Inspiration: {i[1]:<85}Birth year: {i[2]:<10}Death year: {i[3]}')
+    # finish loop here
+    db.close
+
+def inspo_death_year_after():
+    # docstring - print all outputs nicely
+    aft_death = int(input('\nEnter a year: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, inspo, birth_year, death_year FROM bsd_characters WHERE death_year >= ? ORDER BY name ASC;'
+    cursor.execute(sql,(aft_death,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters with authors (as their inspiration) that died after {aft_death} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Inspiration: {i[1]:<85}Birth year: {i[2]:<10}Death year: {i[3]}')
+    # finish loop here
+    db.close
+
+# asking character ages queries 
+
+def below_age():
+    # docstring - print all outputs nicely
+    blw_age = int(input('\nEnter an age: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, age, gender, status FROM bsd_characters WHERE age <= ? ORDER BY name ASC;'
+    cursor.execute(sql,(blw_age,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters below {blw_age} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Age: {i[1]:<10}Gender: {i[2]:<10}Status: {i[3]}')
+    # finish loop here
+    db.close
+
+def above_age():
+    # docstring - print all outputs nicely
+    abv_age = int(input('\nEnter an age: '))
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = 'SELECT name, age, gender, status FROM bsd_characters WHERE age >= ? ORDER BY name ASC;'
+    cursor.execute(sql,(abv_age,))
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nCharacters above {abv_age} are:')
+    for i in results:
+        print(f'Name: {i[0]:<35}Age: {i[1]:<10}Gender: {i[2]:<10}Status: {i[3]}')
+    # finish loop here
+    db.close
+
+def age_10s():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '10s' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters estimated to be in their teens:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+def age_20s():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '20s' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters estimated to be in their twenties:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+def age_30s():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '30s' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters estimated to be in their thirties:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+def age_40s():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '40s' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters estimated to be in their fourties:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+def age_50s():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '50s' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters estimated to be in their fifties:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+def age_unknown():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, est_age, gender, status FROM bsd_characters WHERE est_age = '?' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters with entirely unknown ages:\n')
+    for character in results:
+        print(f'Name: {character[0]:<36}Gender: {character[2]:<75}Status: {character[3]}\n')
+    # finish loop here
+    db.close
+
+# affiliation character query functions
+
+def all_character_affiliation():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT bsd_characters.name, bsd_characters.job, affiliation.affiliation_name FROM bsd_characters JOIN character_affiliation ON bsd_characters.id = character_affiliation.character_id JOIN affiliation ON affiliation.affiliation_id = character_affiliation.affiliation_id ORDER BY bsd_characters.name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters and their affiliations:\n')
+    for i in results:
+        print(f'Name: {i[0]:<35}Job: {i[1]:<85}Affiliation: {i[2]}')
+    # finish loop here
+    db.close
+
 def ada_character_affiliation():
     # docstring - print all outputs nicely
     db = sqlite3.connect(database)
@@ -51,7 +258,7 @@ def ada_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Armed Detective Agency are:\n')
+    print(f'\nCharacters affiliated with the Armed Detective Agency are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -65,7 +272,7 @@ def pm_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Port Mafia are:\n')
+    print(f'\nCharacters affiliated with the Port Mafia are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -79,7 +286,7 @@ def jpn_gov_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Japanese government are:\n')
+    print(f'\nCharacters affiliated with the Japanese government are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -93,7 +300,7 @@ def jpn_mltr_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Japanese millitary are:\n')
+    print(f'\nCharacters affiliated with the Japanese millitary are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -107,7 +314,7 @@ def guild_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Guild are:\n')
+    print(f'\nCharacters affiliated with the Guild are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -121,7 +328,7 @@ def rats_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Rats in the Housse of the Dead are:\n')
+    print(f'\nCharacters affiliated with the Rats in the Housse of the Dead are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -135,7 +342,7 @@ def doa_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with the Decay of Angels are:\n')
+    print(f'\nCharacters affiliated with the Decay of Angels are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -149,7 +356,7 @@ def sheep_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with The Sheep are:\n')
+    print(f'\nCharacters affiliated with The Sheep are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -163,7 +370,7 @@ def tran_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with The Transcendents are:\n')
+    print(f'\nCharacters affiliated with The Transcendents are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -177,7 +384,7 @@ def manh_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with Manhasset Security are:\n')
+    print(f'\nCharacters affiliated with Manhasset Security are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -191,7 +398,7 @@ def mimic_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with Mimic are:\n')
+    print(f'\nCharacters affiliated with Mimic are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<10}')
     # finish loop here
@@ -205,7 +412,7 @@ def other_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Characters affiliated with other organisations are are:\n')
+    print(f'\nCharacters affiliated with other organisations are are:\n')
     for i in results:
         print(f'Name: {i[0]:<30}Job: {i[1]:<50}Affiliation: {i[2]}')
     # finish loop here
@@ -219,18 +426,74 @@ def un_character_affiliation():
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through the results
-    print(f'Unaffiliated characters are:\n')
+    print(f'\nUnaffiliated characters are:\n')
     for i in results:
         print(f'Name: {i[0]:<40}Job: {i[1]:<10}')
     # finish loop here
     db.close
+
+# 4th category menu functions
+def inspo_birth_year():
+    while True:
+        try:
+            b_year = int(input('\nHow do you want to sort by birth year?\n 1.) Sort by before a year\n 2.) Sort by after a year\n 3.) Back to main menu\n\n'))
+            if b_year == 1:
+                inspo_birth_year_before()
+            if b_year == 2:
+                inspo_birth_year_after()
+            if b_year == 3:
+                bsd_main_menu()
+                break
+        except ValueError:
+            print('Answer in numbers from 1-3 only please.\n')
+    return
+
+def inspo_death_year():
+    while True:
+        try:
+            b_year = int(input('\nHow do you want to sort by death year?\n 1.) Sort by before a year\n 2.) Sort by after a year\n 3.) Back to main menu\n\n'))
+            if b_year == 1:
+                inspo_death_year_before()
+            if b_year == 2:
+                inspo_death_year_after()
+            if b_year == 3:
+                bsd_main_menu()
+                break
+        except ValueError:
+            print('Answer in numbers from 1-3 only please.\n')
+    return
+
+def un_est_age():
+    while True:
+        try:
+            est_age = int(input("\nHow do you want to sort the ages of the characters that haven't been explicitly stated?\n 1.) Characters estimated to be in their teens\n 2.) Characters estimated to be in their 20s\n 3.) Characters estimated to be in their 30s\n 4.) Characters estimated to be in their 40s\n 5.) Characters estimated to be in their 50s\n 6.) Characters with entirely unknown ages\n 7.) Back to main menu\n\n"))
+            if est_age == 1:
+                age_10s()
+            if est_age == 2:
+                age_20s()
+            if est_age == 3:
+                age_30s()
+            if est_age == 4:
+                age_40s()
+            if est_age == 5:
+                age_50s()
+            if est_age == 6:
+                age_unknown()
+            if est_age == 7:
+                bsd_main_menu()
+                break
+        except ValueError:
+            print('Answer in numbers from 1-7 only please.\n')
+    return
 
 
 # 3rd category menu functions
 def character_affiliation_menu():
     while True:
         try:
-            affi = int(input("\nCharacter affiliation menu: \n\n 1.)  All characters and their affiliations (some will show up more than once)\n 2.)  Characters affiliated with the Armed Detective Agency \n 3.)  Characters affiliated with the Port Mafia\n 4.)  Characters affiliated with the Japanese government\n 5.)  Characters affiliated with the Japanese millitary\n 6.)  Characters affiliated with the Guild\n 7.)  Characters affiliated with Rats in the House of the Dead\n 8.)  Characters affiliated with the Decay of Angels\n 9.)  Characters affiliated with the Sheep\n 10.) Characters affiliated with the Transcendents\n 11.) Characters affiliated with Manhasset Security\n 12.) Characters affiliated with Mimic\n 13.) Characters affiliated with other organisations\n 14.) Unaffiliated characters\n 15.) Back to main menu\n"))
+            affi = int(input("\nCharacter affiliation menu: \n\n 1.)  All characters and their affiliations (some will show up more than once)\n 2.)  Characters affiliated with the Armed Detective Agency \n 3.)  Characters affiliated with the Port Mafia\n 4.)  Characters affiliated with the Japanese government\n 5.)  Characters affiliated with the Japanese millitary\n 6.)  Characters affiliated with the Guild\n 7.)  Characters affiliated with Rats in the House of the Dead\n 8.)  Characters affiliated with the Decay of Angels\n 9.)  Characters affiliated with the Sheep\n 10.) Characters affiliated with the Transcendents\n 11.) Characters affiliated with Manhasset Security\n 12.) Characters affiliated with Mimic\n 13.) Characters affiliated with other organisations\n 14.) Unaffiliated characters\n 15.) Back to main menu\n\n"))
+            if affi == 1:
+                all_character_affiliation()
             if affi == 2:
                 ada_character_affiliation()
             if affi == 3:
@@ -264,11 +527,16 @@ def character_affiliation_menu():
             print('Answer in numbers from 1-15 only please.\n')
     return
 
-
 def character_inspo_menu():
     while True:
         try:
-            inspo = int(input("The inspiration for characters menu: \n(read the bit of explanation about the series from the main menu for context) \n\n 1.) All characters with known inspirations from the real world \n 2.) Sort by the real-life authors that inspired the characters' death year\n 3.) Sort by the real-life authors that inspired the characters' birth year\n 4.) Back to main menu\n"))
+            inspo = int(input("The inspiration for characters menu: \n(read the bit of explanation about the series from the main menu for context) \n\n 1.) All characters with known inspirations from the real world \n 2.) Sort by the real-life authors that inspired the characters' death year\n 3.) Sort by the real-life authors that inspired the characters' birth year\n 4.) Back to main menu\n\n Warning, 2 & 3 only works for characters that are inspired by actual authors. For more context, check out the background info about the series in the main menu.\n\n "))
+            if inspo == 1:
+                all_inspo()
+            if inspo == 2:
+                inspo_death_year()
+            if inspo == 3:
+                inspo_birth_year()
             if inspo == 4:
                 bsd_main_menu()
                 break
@@ -276,6 +544,20 @@ def character_inspo_menu():
             print('Answer in numbers from 1-4 only please.\n')
     return
 
+def character_age():
+    while True:
+        try:
+            age = int(input('How do you want to sort by character age?\n\n 1.) Sort for characters below a certain age\n 2.) Sort for characters above a certain age\n 3.) Sort for characters with unknown ages\n 4.) Back to main menu\n\n'))
+            if age == 1:
+                below_age()
+            if age == 2:
+                above_age()
+            if age == 3:
+                un_est_age()
+            if age == 4:
+                bsd_main_menu()
+        except ValueError:
+            print('Answer in numbers from 1-4 only please.\n')
 
 # 2nd category menu functions
 def bsd_backstory():
@@ -301,6 +583,8 @@ def bsd_character_menu_1():
                 character_inspo_menu()
             if first_characters_menu == 4:
                 character_affiliation_menu()
+            if first_characters_menu == 5:
+                character_age()
             if first_characters_menu == 9:
                 bsd_main_menu()
                 break
@@ -324,6 +608,7 @@ def bsd_main_menu():
                 print('\nEnter a number between 1-3, please.\n')
         except ValueError:
             print('\nEnter a number between 1-3, please.\n')
+    return
         
 
 # intro main menu function
