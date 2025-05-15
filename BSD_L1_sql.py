@@ -547,7 +547,75 @@ def ame_characters():
     # finish loop here
     db.close
 
+def fre_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'French' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll French characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
 
+def bri_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'British' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll British characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def rus_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'Russian' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll Russian characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def oth_nation_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE NOT nationality = 'Japanese' AND NOT nationality = 'American' AND NOT nationality = 'French' AND NOT nationality = 'British' AND NOT nationality = 'Russian' AND NOT nationality = 'Unknown' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll other nationalities (on on the previous menu) characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def un_nation_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'Unknown' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll characters with unknown nationalities:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
 
 # 4th category menu functions
 def inspo_birth_year():
@@ -715,15 +783,15 @@ def character_nationality():
             if nation == 2:
                 ame_characters()
             if nation == 3:
-                ()
+                fre_characters()
             if nation == 4:
-                ()
+                bri_characters()
             if nation == 5:
-                ()
+                rus_characters()
             if nation == 6:
-                ()
+                oth_nation_characters()
             if nation == 7:
-                ()
+                un_nation_characters()
             if nation == 8:
                 bsd_main_menu()
         except ValueError:
@@ -731,7 +799,7 @@ def character_nationality():
 
 # 2nd category menu functions
 def bsd_backstory():
-        print('\nBungo Stray Dogs is about...\n')
+        print("\nBungo Stray Dogs is about an orphan who finds out he's a man-eating tiger after saving a man from drowning at the ripe old age of 18. The man turns out to be a detective, \nand the orphan now finds himself with a job. Now, he has to fight American capitalists and Russian terrorists. \n\nThat's what the summary says, at least. \n\nI would say it's a seinen series that mixes humor and tragedies really well, and the characters are very well written (the mimimal fanservice is a bonus). \n\nThe characters are basically literacy references. Fyodor Dostoyevsky, Dazai Osamu, Edgar Allan Poe, Louisa May Alcott, etc. Very famous names in old classics, \nand they are all characters in this series, with their 'abilities' being created as an interpretation of some of their most famous works. \nThe supporting cast is also made up of characters that show up in these authors' books.\n\nThe series is still ongoing, and so this is only accurate as of May 2025. \n")
         while True:
             exit = input("Do you want to back to main menu? 'yes' or 'no' answers only please.\n")
             if exit == 'yes':
