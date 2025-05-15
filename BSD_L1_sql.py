@@ -518,6 +518,37 @@ def un_character_affiliation():
     # finish loop here
     db.close
 
+# nationality query sort functions
+def jpn_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'Japanese' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll Japanese characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+def ame_characters():
+    # docstring - print all outputs nicely
+    db = sqlite3.connect(database)
+    cursor = db.cursor()
+    sql = "SELECT name, nationality, job FROM bsd_characters WHERE nationality = 'American' ORDER BY name ASC;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through the results
+    print(f'\nAll American characters:\n')
+    for character in results:
+        print(f'Name: {character[0]:<40}Nationality: {character[1]:<25}Job: {character[2]}\n')
+    # finish loop here
+    db.close
+
+
+
 # 4th category menu functions
 def inspo_birth_year():
     while True:
@@ -675,6 +706,29 @@ def character_status():
         except ValueError:
             print('Answer in numbers from 1-4 only please.\n')
 
+def character_nationality():
+    while True:
+        try:
+            nation = int(input('How do you want to sort by character nationality? \n\n 1.) Sort for Japanese characters\n 2.) Sort for American characters\n 3.) Sort for French characters\n 4.) Sort for British characters\n 5.) Sort for Russian characters\n 6.) Sort for other nationality characters\n 7.) Sort for unknown nationality characters\n 8.) Back to main menu\n\n'))
+            if nation == 1:
+                jpn_characters()
+            if nation == 2:
+                ame_characters()
+            if nation == 3:
+                ()
+            if nation == 4:
+                ()
+            if nation == 5:
+                ()
+            if nation == 6:
+                ()
+            if nation == 7:
+                ()
+            if nation == 8:
+                bsd_main_menu()
+        except ValueError:
+            print('Answer in numbers from 1-8 only please.\n')
+
 # 2nd category menu functions
 def bsd_backstory():
         print('\nBungo Stray Dogs is about...\n')
@@ -706,7 +760,7 @@ def bsd_character_menu_1():
             if first_characters_menu == 7:
                 character_status()
             if first_characters_menu == 8:
-                ()
+                character_nationality()
             if first_characters_menu == 9:
                 bsd_main_menu()
                 break
