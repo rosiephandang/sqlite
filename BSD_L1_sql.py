@@ -866,7 +866,7 @@ def intro_entry():
 
 # log in
 print("\nBungo Stray Dogs character database\n________\n\nLOG IN\n________\n\nWhat is Natsume Soseki's name as a cat? (Hint, it's Haruno's cat)\n\nYou have 5 tries.")
-log_in = input("\nEnter: ".lower())
+log_in = input("\nEnter: ").lower()
 tries = 5
 while tries != 0:
     if log_in == 'miichan' or log_in == 'mii-chan':
